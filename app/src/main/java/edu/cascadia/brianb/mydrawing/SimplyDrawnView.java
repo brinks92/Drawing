@@ -10,6 +10,7 @@ import android.graphics.Path;
 import android.graphics.PathDashPathEffect;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -21,6 +22,9 @@ public class SimplyDrawnView extends View {
     private Paint mPaint;
     private Path mPath;
     private float mWidth, mHeight;
+    private float thing [] = new float[10];
+
+
 
     public SimplyDrawnView(Context context, AttributeSet attributeSet){
         super(context, attributeSet);
@@ -32,7 +36,19 @@ public class SimplyDrawnView extends View {
         super.onSizeChanged(w, h, oldw, oldh);
         mWidth = w;
         mHeight = h;
+
+        thing[0] = 0;
+        thing[1] = 120 ;
+        thing[2] = mWidth;
+        thing[3] = 120;
+
+        thing[4] = 90;
+        thing[5] = 0;
+        thing[6] = 90;
+        thing[7] = mHeight;
     }
+// beginning (x , y) end (x,y)
+
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -45,13 +61,20 @@ public class SimplyDrawnView extends View {
 
         //TODO: Finish drawing red line
         mPaint.setColor(Color.RED); mPaint.setStrokeWidth(10);
-
+        canvas.drawLine(mWidth, 20,30,mHeight,mPaint);
         //TODO: Draw green lines
+            mPaint.setColor(Color.GREEN);
+           canvas.drawLines(thing, mPaint);
 
         //TODO: Draw Text
+         mPaint.setColor(Color.RED);
+         mPaint.setTextSize(80);
+        canvas.drawText("i am the text", 30, 80,mPaint);
 
         //TODO: Draw Text on a Path
+mPath.addArc(50 ,200,600, 600,180,270);
 
+            canvas.drawTextOnPath("I am the Other Text",mPath, 0, 0,mPaint);
         //TODO: Draw filled, opaque, and open ovals
 
         //TODO: Draw bee bitmap
